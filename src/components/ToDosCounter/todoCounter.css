@@ -9,3 +9,7 @@
 .TodoCounter span {
     font-weight: 700
 }
+
+.TodoCountLoading{
+    opacity: 25%;
+}

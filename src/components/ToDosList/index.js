@@ -3,11 +3,13 @@ import './todoList.css'
 
 function TodoList(props) {
     return (
-        <section className="TodoList-container">
+        <section >
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
 
-            {(!props.loading && !props.searchedTodos.length) && props.onEmptyTodos()}
+            {(!props.loading && !props.searchedTodos.length) && props.onEmpty()}
+
+            {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
 
             {props.searchedTodos.map(props.render)}
 

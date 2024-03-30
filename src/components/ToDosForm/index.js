@@ -6,13 +6,11 @@ function TodoForm({addTodo, setOpenModal}) {
     const [newTodoValue, setNewTodoValue] = React.useState('');
 
     //para el btn cancelar
-    const handleCancelar = (e) => {
-        e.preventDefault();
+    const handleCancelar = () => {
         setOpenModal(false) //no usar directamnt en el onClick
     };
     //para btn crear 
-    const handleCrear = (e) => {
-        e.preventDefault();
+    const handleCrear = () => {
         //invoco a la funcion q está en el contexto GLOBAL para crear un toDo
         addTodo(newTodoValue);
         setOpenModal(false);
@@ -27,7 +25,7 @@ function TodoForm({addTodo, setOpenModal}) {
             <label>Ing tu ToDo</label>
             <textarea value={newTodoValue} placeholder='creo toDo' onChange={handleOnChange}/>
             <div className='contBtn'>
-                <button className='cancelar btns' type='buttom' onClick={(e) => handleCancelar(e)}>Cancelar</button>
+                <button className='cancelar btns' type='buttom' onClick={() => handleCancelar}>Cancelar</button>
                 <button className='crear btns' type='submit'>Crear</button>
             </div>
         </form>

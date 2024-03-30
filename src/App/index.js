@@ -34,11 +34,19 @@ function App() {
         <React.Fragment>
             {/* paso estados SIN tener q pasarlo por todo los comp SOLO por el los necesita */}
             <ToDoHeader>
-                <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos}/>
-                <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <TodoCounter 
+                    totalTodos={totalTodos} 
+                    completedTodos={completedTodos}
+                    loading={loading}
+                />
+                <TodoSearch 
+                    searchValue={searchValue} 
+                    setSearchValue={setSearchValue}
+                    loading={loading}
+                />
             </ToDoHeader>
 
-            {/* utilizacion de las renders prop PARA q dipare/renderice sierto comp segun el conte de la propiedad del comp TodoList */}
+            {/* utilizacion de las renders PROPS PARA q dipare/renderice sierto comp segun el conte de la propiedad del comp TodoList */}
             {/* en render(puede ser cualqr nombre) solo hace referencia a es el componente q renderizará si todo está bien */}
             {/* en las props error, loading, searchTodos van el dato q hará q se renderice el comp q cont c/funcion onError, onLoading, etc */}
             <TodoList
@@ -55,17 +63,18 @@ function App() {
                         completed={todo.completed}
                         onComplete={() => completeTodo(todo.text)}
                         onDelete={() => deleteTodo(todo.text)}
+                        onEmptySeacrhResuts={(texto) => <p>No hay resultados para la busqueda: {texto}</p>}
                     />
                 }
             />
 
-            <CreateTodoButton />
+            <CreateTodoButton  setOpenModal={setOpenModal}/>
 
             {/* creo componente para teletransportar(React Portals) */}
             {
                 openModal && (
                     <Modal>
-                        <TodoForm addTodo={addTodo} setOpenModal={setOpenModal}/>
+                        <TodoForm addTodo={addTodo} onDelete={() => setOpenModal(openModal)}/>
                     </Modal>
                 )
             }

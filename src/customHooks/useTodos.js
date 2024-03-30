@@ -14,7 +14,7 @@ function useTodos(){
     //estado para el search
     const [searchValue, setSearchValue] = React.useState('');
     //estado para el Modal
-    const [openModal, setOpenModal] = React.useState(false);
+    const [openModal, setOpenModal] = React.useState(false); /* console.log("openM: ", openModal); */
     
     //filtro ToDos completados
     const completedTodos = todos.filter(todo => !!todo.completed).length;

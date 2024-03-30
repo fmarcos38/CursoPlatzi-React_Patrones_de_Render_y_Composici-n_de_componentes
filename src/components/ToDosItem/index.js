@@ -1,26 +1,25 @@
+import React from 'react';
 import './todoItem.css'; 
+import { CompleteIcon } from '../TodoIcon/CompleteIcon';
+import { DeleteIcon } from '../TodoIcon/DeleteIcon';
 
-function TodoItem({ text, completed, handlerComplete, deleteTodo}) { 
+function TodoItem(props) {
     return (
         <li className="TodoItem">
-            {/* utilizo clases dinamicas SI viene TRUE(osea completada) &&(entonces)*/}
-            <span 
-                className={`Icon Icon-check ${completed && "Icon-check--active"}`}
-                onClick={() => handlerComplete(text)}
-            > 
-                ✔
-            </span>
-            <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>
-                {text}
-            </p>
-            <span 
-                className="Icon Icon-delete"
-                onClick={() => deleteTodo(text)}
+            <CompleteIcon
+                completed={props.completed}
+                onComplete={props.onComplete}
+            />
+            <p
+                className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}
             >
-                X
-            </span>
+                {props.text}
+            </p>
+            <DeleteIcon
+                onDelete={props.onDelete}
+            />
         </li>
-    ); 
+    );
 }
 
 export { TodoItem };
