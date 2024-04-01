@@ -9,6 +9,7 @@ function useTodos(){
         saveItem: saveTodos,
         loading,
         error,
+        sincronized: sincronizedTodos,
     } = useLocalStorage('TODOS_V1', []);
 
     //estado para el search
@@ -69,7 +70,7 @@ function useTodos(){
         openModal,
         setOpenModal,
         addTodo,
-        
+        sincronizedTodos,
     }
 };
 
